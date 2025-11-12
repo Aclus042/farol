@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Hub de RPGs - Portal interativo para sistemas de RPG">
+    <title>Arquivos do Sobrenatural - Hub de RPGs</title>
+    
+    <!-- Estilos -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    
+    <!-- Favicon (pode ser substituído por um ícone personalizado) -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🕯️</text></svg>">
+</head>
+<body>
+    
+    <!-- Header Principal -->
+    <header class="main-header">
+        <h1 class="main-title">Arquivos do Sobrenatural</h1>
+        <p class="subtitle">Portal dos Mistérios e Criaturas da Escuridão</p>
+    </header>
+
+    <!-- Container Principal -->
+    <main class="container">
+        
+        <!-- Texto Introdutório -->
+        <section class="intro-text">
+            <p>"Entre na penumbra do desconhecido, onde as sombras guardam segredos ancestrais e criaturas antigas aguardam nas brumas do Norte..."</p>
+        </section>
+
+        <!-- Grid de Sistemas de RPG -->
+        <section class="systems-grid">
+            
+            <!-- Card: Vaesen -->
+            <article class="system-card" onclick="window.location.href='vaesen/vaesen.html'" tabindex="0" role="link" aria-label="Acessar sistema Vaesen">
+                <div class="system-icon">🕯️</div>
+                <h2>Vaesen</h2>
+                <p>Mistérios Nórdicos e Criaturas do Folclore Escandinavo</p>
+                <p style="margin-top: 1rem; font-size: 0.95rem; font-style: italic; color: var(--cor-dourado-escuro);">
+                    Explore a Escandinávia do século XIX e desvende os segredos das criaturas míticas que habitam as sombras.
+                </p>
+            </article>
+
+            <!-- Espaço para futuros sistemas -->
+            <!-- 
+            <article class="system-card">
+                <div class="system-icon">🎲</div>
+                <h2>Novo Sistema</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            </article>
+            -->
+
+        </section>
+
+        <!-- Informação Adicional -->
+        <section class="content-section" style="text-align: center; margin-top: 4rem;">
+            <h3>Sobre este Portal</h3>
+            <p style="max-width: 700px; margin: 1rem auto; line-height: 1.8; color: var(--cor-texto-secundario);">
+                Este portal foi criado para facilitar o acesso às regras e informações dos sistemas de RPG. 
+                Cada card acima representa um universo único de aventuras. Clique para explorar as 
+                regras, criar personagens e mergulhar nas histórias que aguardam nas sombras.
+            </p>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>Portal de RPG • Desenvolvido para mestres e jogadores</p>
+        <p style="margin-top: 0.5rem; font-size: 0.8rem;">
+            "O desconhecido sempre esteve aqui, apenas aguardando que você abrisse os olhos..."
+        </p>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="assets/js/script.js"></script>
+    
+    <script>
+        // Adiciona efeito de hover especial para os cards de sistema
+        document.querySelectorAll('.system-card').forEach(card => {
+            // Suporte para teclado - Enter para navegar
+            card.addEventListener('keydown', function(e) {
+                if (e.key === 'Enter') {
+                    this.click();
+                }
+            });
+            
+            // Efeito de brilho que segue o mouse
+            card.addEventListener('mousemove', function(e) {
+                const rect = this.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                this.style.setProperty('--mouse-x', x + 'px');
+                this.style.setProperty('--mouse-y', y + 'px');
+            });
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,558 @@
+/* ============================================
+   RPG HUB - ESTILO VAESEN
+   Tema: Sombrio, místico, inspirado em ocultismo nórdico
+   Paleta: Verde-acinzentado escuro, dourado envelhecido, branco amarelado
+   ============================================ */
+
+/* === IMPORTAÇÃO DE FONTES === */
+@import url('https://fonts.googleapis.com/css2?family=IM+Fell+English+SC&family=EB+Garamond:wght@400;500;600;700&display=swap');
+
+/* === VARIÁVEIS CSS === */
+:root {
+  /* Cores principais */
+  --cor-fundo-principal: #1e2a23;
+  --cor-fundo-secundario: #2a3a30;
+  --cor-texto-primario: #f5f5dc;
+  --cor-texto-secundario: #d4d4c8;
+  --cor-destaque-dourado: #a48b5f;
+  --cor-dourado-claro: #c4a56e;
+  --cor-dourado-escuro: #8a7350;
+  --cor-brilho: rgba(196, 165, 110, 0.4);
+  
+  /* Fontes */
+  --fonte-titulo: 'IM Fell English SC', serif;
+  --fonte-texto: 'EB Garamond', serif;
+  
+  /* Transições */
+  --transicao-padrao: all 0.3s ease;
+  --transicao-suave: all 0.5s ease;
+  
+  /* Sombras */
+  --sombra-suave: 0 4px 12px rgba(0, 0, 0, 0.4);
+  --sombra-forte: 0 8px 24px rgba(0, 0, 0, 0.6);
+  --sombra-brilho: 0 0 20px var(--cor-brilho);
+}
+
+/* === RESET E BASE === */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--fonte-texto);
+  background-color: var(--cor-fundo-principal);
+  color: var(--cor-texto-primario);
+  line-height: 1.6;
+  min-height: 100vh;
+  overflow-x: hidden;
+  /* Textura de papel envelhecido sutil */
+  background-image: 
+    linear-gradient(rgba(30, 42, 35, 0.9), rgba(30, 42, 35, 0.9)),
+    repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0, 0, 0, 0.03) 2px, rgba(0, 0, 0, 0.03) 4px);
+}
+
+/* Animação de fade-in na página */
+body {
+  animation: fadeIn 0.6s ease-in;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    filter: blur(5px);
+  }
+  to {
+    opacity: 1;
+    filter: blur(0);
+  }
+}
+
+/* === TÍTULOS === */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--fonte-titulo);
+  color: var(--cor-dourado-claro);
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+  letter-spacing: 2px;
+}
+
+h1 {
+  font-size: 3.5rem;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+}
+
+h3 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+}
+
+/* === CONTAINER PRINCIPAL === */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+/* === HEADER PRINCIPAL === */
+.main-header {
+  text-align: center;
+  padding: 4rem 2rem 2rem;
+  background: linear-gradient(180deg, rgba(42, 58, 48, 0.6) 0%, transparent 100%);
+}
+
+.main-title {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+  position: relative;
+  display: inline-block;
+}
+
+.main-title::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--cor-destaque-dourado), transparent);
+}
+
+.subtitle {
+  font-size: 1.2rem;
+  color: var(--cor-texto-secundario);
+  font-style: italic;
+}
+
+/* === GRID DE CARDS (INDEX) === */
+.systems-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  padding: 3rem 0;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+/* === CARD DE SISTEMA === */
+.system-card {
+  background: linear-gradient(135deg, rgba(42, 58, 48, 0.8), rgba(30, 42, 35, 0.9));
+  border: 2px solid var(--cor-destaque-dourado);
+  border-radius: 16px;
+  padding: 2rem;
+  text-align: center;
+  cursor: pointer;
+  transition: var(--transicao-padrao);
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--sombra-suave);
+  min-height: 350px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Efeito de textura de papel no card */
+.system-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(255, 255, 240, 0.02) 2px, rgba(255, 255, 240, 0.02) 4px);
+  pointer-events: none;
+}
+
+/* Efeito de brilho no hover */
+.system-card::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--cor-brilho), transparent);
+  transform: translate(-50%, -50%);
+  transition: width 0.5s ease, height 0.5s ease;
+  pointer-events: none;
+  opacity: 0;
+}
+
+.system-card:hover::after {
+  width: 400px;
+  height: 400px;
+  opacity: 1;
+}
+
+.system-card:hover {
+  transform: translateY(-10px) scale(1.03);
+  box-shadow: var(--sombra-forte), var(--sombra-brilho);
+  border-color: var(--cor-dourado-claro);
+}
+
+.system-card h2 {
+  position: relative;
+  z-index: 1;
+  font-size: 2.8rem;
+  margin-bottom: 1rem;
+}
+
+.system-card p {
+  position: relative;
+  z-index: 1;
+  font-size: 1.1rem;
+  color: var(--cor-texto-secundario);
+}
+
+.system-icon {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+  position: relative;
+  z-index: 1;
+}
+
+/* === NAVBAR === */
+.navbar {
+  background: linear-gradient(180deg, rgba(42, 58, 48, 0.95), rgba(30, 42, 35, 0.95));
+  padding: 1.5rem 2rem;
+  border-bottom: 2px solid var(--cor-destaque-dourado);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(10px);
+}
+
+.navbar-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.navbar-title {
+  font-size: 2.5rem;
+  text-align: center;
+  margin: 0;
+  letter-spacing: 3px;
+}
+
+.navbar-links {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+/* === BOTÕES ANIMADOS DA NAVBAR === */
+.nav-button {
+  background: linear-gradient(135deg, rgba(164, 139, 95, 0.2), rgba(138, 115, 80, 0.2));
+  color: var(--cor-texto-primario);
+  text-decoration: none;
+  padding: 0.8rem 1.5rem;
+  border: 2px solid var(--cor-destaque-dourado);
+  border-radius: 8px;
+  font-family: var(--fonte-titulo);
+  font-size: 1rem;
+  letter-spacing: 1.5px;
+  transition: var(--transicao-padrao);
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+/* Efeito de brilho percorrendo o botão */
+.nav-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(196, 165, 110, 0.4), transparent);
+  transition: left 0.5s ease;
+}
+
+.nav-button:hover::before {
+  left: 100%;
+}
+
+.nav-button:hover {
+  background: linear-gradient(135deg, rgba(164, 139, 95, 0.4), rgba(138, 115, 80, 0.3));
+  border-color: var(--cor-dourado-claro);
+  box-shadow: 0 0 20px var(--cor-brilho);
+  transform: translateY(-3px);
+}
+
+.nav-button:active {
+  transform: translateY(-1px);
+  box-shadow: 0 0 10px var(--cor-brilho);
+}
+
+/* === CONTENT SECTION === */
+.content-section {
+  max-width: 1000px;
+  margin: 3rem auto;
+  padding: 2rem;
+}
+
+.intro-text {
+  text-align: center;
+  font-size: 1.4rem;
+  font-style: italic;
+  color: var(--cor-texto-secundario);
+  margin: 3rem 0;
+  padding: 2rem;
+  background: rgba(42, 58, 48, 0.4);
+  border-left: 4px solid var(--cor-destaque-dourado);
+  border-radius: 8px;
+}
+
+/* === CARDS EXPANSÍVEIS (REGRAS) === */
+.rules-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.rule-card {
+  background: linear-gradient(135deg, rgba(255, 255, 240, 0.08), rgba(255, 255, 240, 0.04));
+  border: 2px solid var(--cor-destaque-dourado);
+  border-radius: 12px;
+  padding: 1.5rem;
+  cursor: pointer;
+  transition: var(--transicao-padrao);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Textura de papel envelhecido no card */
+.rule-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    repeating-linear-gradient(0deg, transparent, transparent 1px, rgba(255, 255, 240, 0.03) 1px, rgba(255, 255, 240, 0.03) 3px);
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+.rule-card:hover {
+  background: linear-gradient(135deg, rgba(255, 255, 240, 0.15), rgba(255, 255, 240, 0.08));
+  transform: translateX(5px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
+  border-color: var(--cor-dourado-claro);
+}
+
+.card-header {
+  font-family: var(--fonte-titulo);
+  font-size: 1.5rem;
+  color: var(--cor-dourado-claro);
+  margin-bottom: 0.5rem;
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Ícone de expansão */
+.card-header::after {
+  content: '⌄';
+  font-size: 1.8rem;
+  transition: transform 0.3s ease;
+  color: var(--cor-destaque-dourado);
+}
+
+.rule-card.active .card-header::after {
+  transform: rotate(180deg);
+}
+
+.card-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease, padding-top 0.4s ease;
+  position: relative;
+  z-index: 1;
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: var(--cor-texto-secundario);
+}
+
+.rule-card.active .card-content {
+  max-height: 2000px;
+  padding-top: 1rem;
+}
+
+.card-content p {
+  margin-bottom: 1rem;
+}
+
+.card-content ul, .card-content ol {
+  margin-left: 2rem;
+  margin-bottom: 1rem;
+}
+
+.card-content li {
+  margin-bottom: 0.5rem;
+}
+
+/* === BOTÃO DE VOLTAR === */
+.back-button {
+  display: inline-block;
+  margin: 2rem 0;
+  padding: 1rem 2rem;
+  background: linear-gradient(135deg, rgba(164, 139, 95, 0.3), rgba(138, 115, 80, 0.3));
+  color: var(--cor-texto-primario);
+  text-decoration: none;
+  border: 2px solid var(--cor-destaque-dourado);
+  border-radius: 8px;
+  font-family: var(--fonte-titulo);
+  font-size: 1.1rem;
+  letter-spacing: 1.5px;
+  transition: var(--transicao-padrao);
+}
+
+.back-button:hover {
+  background: linear-gradient(135deg, rgba(164, 139, 95, 0.5), rgba(138, 115, 80, 0.4));
+  transform: translateX(-5px);
+  box-shadow: 0 0 20px var(--cor-brilho);
+}
+
+/* === FOOTER === */
+.footer {
+  text-align: center;
+  padding: 2rem;
+  margin-top: 4rem;
+  border-top: 1px solid var(--cor-destaque-dourado);
+  background: linear-gradient(0deg, rgba(42, 58, 48, 0.6) 0%, transparent 100%);
+  font-size: 0.9rem;
+  color: var(--cor-texto-secundario);
+}
+
+/* === ANIMAÇÕES ADICIONAIS === */
+@keyframes glowPulse {
+  0%, 100% {
+    box-shadow: 0 0 10px var(--cor-brilho);
+  }
+  50% {
+    box-shadow: 0 0 25px var(--cor-brilho);
+  }
+}
+
+@keyframes runeGlow {
+  0%, 100% {
+    text-shadow: 0 0 5px var(--cor-brilho);
+  }
+  50% {
+    text-shadow: 0 0 20px var(--cor-brilho), 0 0 30px var(--cor-dourado-claro);
+  }
+}
+
+/* Classe para animação de runas */
+.rune-glow {
+  animation: runeGlow 2s ease-in-out infinite;
+}
+
+/* === RESPONSIVIDADE === */
+@media (max-width: 768px) {
+  .main-title {
+    font-size: 2.5rem;
+  }
+  
+  h1 {
+    font-size: 2rem;
+  }
+  
+  h2 {
+    font-size: 1.8rem;
+  }
+  
+  .navbar-title {
+    font-size: 1.8rem;
+  }
+  
+  .navbar-links {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .nav-button {
+    width: 100%;
+    text-align: center;
+  }
+  
+  .systems-grid {
+    grid-template-columns: 1fr;
+    padding: 2rem 1rem;
+  }
+  
+  .container {
+    padding: 1rem;
+  }
+  
+  .content-section {
+    padding: 1rem;
+    margin: 2rem auto;
+  }
+  
+  .intro-text {
+    font-size: 1.1rem;
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .main-title {
+    font-size: 2rem;
+  }
+  
+  .navbar {
+    padding: 1rem;
+  }
+  
+  .system-card {
+    min-height: 250px;
+    padding: 1.5rem;
+  }
+  
+  .system-card h2 {
+    font-size: 2rem;
+  }
+}
+
+/* === ACESSIBILIDADE === */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Foco visível para navegação por teclado */
+a:focus, button:focus, .rule-card:focus {
+  outline: 3px solid var(--cor-dourado-claro);
+  outline-offset: 3px;
+}
